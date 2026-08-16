@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jonathan Hawla — Cosmology, field-level inference</title>
+<meta name="description" content="PhD student in cosmology at CEA Paris-Saclay. Bayesian field-level inference with differentiable simulators for DESI galaxy clustering and CMB lensing.">
+<meta name="author" content="Jonathan Hawla">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<meta property="og:title" content="Jonathan Hawla — Cosmology">
+<meta property="og:description" content="Bayesian field-level inference with differentiable simulators for DESI galaxy clustering and CMB lensing.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://jhawla.github.io/assets/field.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<nav class="nav">
+  <div class="wrap nav-in">
+    <a class="mark" href="#top">Jonathan Hawla</a>
+    <div class="nav-links">
+      <a href="#research">Research</a>
+      <a href="#talks">Talks</a>
+      <a href="#code">Code</a>
+      <a href="#files">CV &amp; files</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
+
+  <div class="wrap hero-in">
+    <div>
+      <p class="eyebrow">
+        <span>PhD student in cosmology</span>
+        <span>CEA Paris-Saclay · IRFU/DPhP</span>
+        <span>DESI collaboration</span>
+      </p>
+
+      <h1><span class="given">Jonathan</span>Hawla</h1>
+
+      <p class="lede">
+        I build differentiable simulators that infer cosmology from
+        <em>the whole observed field</em> — not from a summary statistic.
+      </p>
+
+      <p class="hero-meta">
+        Bayesian field-level inference &nbsp;·&nbsp; DESI galaxy clustering &times; CMB lensing
+        &nbsp;·&nbsp; primordial non-Gaussianity &nbsp;·&nbsp; JAX on GPUs
+      </p>
+
+      <div class="actions">
+        <a class="btn btn-hot" href="files/Hawla_CV.pdf">Download CV (PDF)</a>
+        <a class="btn btn-ghost" href="https://github.com/jhawla">GitHub</a>
+        <a class="btn btn-ghost" href="mailto:jonathan.hawla@cea.fr">Email</a>
+      </div>
+    </div>
+
+    <img class="portrait" src="assets/photo.jpg" alt="Portrait of Jonathan Hawla" width="600" height="600">
+  </div>
+
+  <p class="wrap hero-caption">
+    Background: matter density field from a Lagrangian perturbation theory realisation —
+    the first stage of the forward model used in this work.
+  </p>
+</header>
+
+<main id="main">
+
+<!-- ============================ RESEARCH ============================ -->
+<section id="research">
+  <div class="wrap">
+    <p class="label">Research</p>
+
+    <div class="split">
+      <div class="prose">
+        <h2>Reading cosmology off the field itself</h2>
+
+        <p>
+          Galaxy surveys map the cosmic web in three dimensions, and the standard way to
+          analyse them is to compress that map into a power spectrum. The compression is
+          lossy: very different fields can share the same power spectrum, and everything
+          non-Gaussian that gravity built up over billions of years is thrown away.
+        </p>
+
+        <p>
+          Field-level inference takes the other route. Instead of compressing the data, it
+          infers the initial density field that evolved into the one we observe, sampling
+          the posterior over millions of parameters at once. Two ingredients make this
+          tractable: a forward model you can differentiate end to end, and a
+          gradient-based sampler that can navigate that space.
+        </p>
+
+        <p>
+          My thesis extends this approach to a second probe. Galaxies are biased tracers of
+          matter, while CMB lensing is an unbiased projection of all the matter along the
+          line of sight. Analysing them jointly at the field level breaks degeneracies that
+          neither probe can resolve alone, and sharpens the constraint on local primordial
+          non-Gaussianity — a signature that would tell us how inflation actually worked.
+        </p>
+
+        <p>
+          The work is supervised by Étienne Burtin and Arnaud De Mattia at
+          CEA Paris-Saclay, within the
+          <a href="https://www.desi.lbl.gov/">DESI collaboration</a>.
+        </p>
+
+        <ol class="chain">
+          <li><strong>Initial conditions</strong><span>A Gaussian field, optionally with local primordial non-Gaussianity.</span></li>
+          <li><strong>Gravitational evolution</strong><span>Lagrangian perturbation theory on a light cone, in full spherical geometry.</span></li>
+          <li><strong>Galaxy bias and RSD</strong><span>Biased tracers placed in redshift space, as DESI actually observes them.</span></li>
+          <li><strong>Lensing projection</strong><span>Convergence maps built under the Born approximation, curved sky throughout.</span></li>
+          <li><strong>Joint likelihood</strong><span>Pixel-exact, with the out-of-box lensing signal marginalised analytically.</span></li>
+          <li><strong>Posterior sampling</strong><span>Microcanonical Langevin Monte Carlo, running on multiple GPUs at NERSC.</span></li>
+        </ol>
+      </div>
+
+      <ul class="facts">
+        <li><b>Thesis</b>Bayesian field-level inference with differentiable simulators for the joint analysis of DESI galaxy clustering and CMB lensing</li>
+        <li><b>Institution</b>CEA Paris-Saclay, IRFU/DPhP — Université Paris-Saclay, ED&nbsp;576&nbsp;PHENIICS</li>
+        <li><b>Supervisors</b>Étienne Burtin, Arnaud De Mattia</li>
+        <li><b>Period</b>Oct 2025 — Sep 2028</li>
+        <li><b>Data</b>DESI LRG · Planck PR4 · ACT DR6 · AbacusSummit</li>
+        <li><b>Stack</b>Python · JAX · numpyro · HEALPix · multi-GPU (NERSC)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TALKS =============================== -->
+<section id="talks">
+  <div class="wrap">
+    <p class="label">Talks &amp; posters</p>
+    <h2>Where this work has been presented</h2>
+
+    <div class="entries">
+
+      <article class="entry">
+        <div class="entry-date">Jul 2026</div>
+        <div>
+          <h3>Adding CMB lensing to the galaxy clustering field-level analysis<span class="tag">Talk</span></h3>
+          <p class="entry-venue">DESI collaboration meeting — Primordial Non-Gaussianity working group. Durham, UK.</p>
+          <a class="pdf" href="files/Hawla_slides_DESI_Durham_2026.pdf">Slides (PDF)</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Jun 2026</div>
+        <div>
+          <h3>Field-level inference for the joint analysis of galaxy clustering and CMB lensing<span class="tag">Talk</span></h3>
+          <p class="entry-venue">GDR CoPhy annual meeting, 30 min. Clermont-Ferrand, France.</p>
+          <a class="pdf" href="files/Hawla_slides_GDR_CoPhy_2026.pdf">Slides (PDF)</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Jun 2026</div>
+        <div>
+          <h3>Field-level inference for the joint analysis of galaxy clustering &amp; CMB lensing<span class="tag">Poster</span></h3>
+          <p class="entry-venue">PheniicsFest, annual meeting of ED PHENIICS, Université Paris-Saclay. Orsay, France.</p>
+          <a class="pdf" href="files/Hawla_poster_PheniicsFest_2026.pdf">Poster (PDF)</a>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Apr 2026</div>
+        <div>
+          <h3>Field-level inference for the joint analysis of galaxy clustering and CMB lensing<span class="tag">Talk</span></h3>
+          <p class="entry-venue">Elbereth conference, Institut d'Astrophysique de Paris, 15 min. Paris, France.</p>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="entry-date">Dec 2025</div>
+        <div>
+          <h3>Spotlight talk<span class="tag">Talk</span></h3>
+          <p class="entry-venue">DESI collaboration meeting. Tucson, Arizona, USA.</p>
+        </div>
+      </article>
+
+    </div>
+
+    <p class="label" style="margin-top:3.5rem">Schools &amp; service</p>
+    <div class="entries">
+      <article class="entry">
+        <div class="entry-date">Aug 2026</div>
+        <div>
+          <h3>Rodolphe Clédassou (Euclid) summer school — Cycle 2, theory</h3>
+          <p class="entry-venue">Two weeks. Pornichet, France.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">Aug 2025</div>
+        <div>
+          <h3>Rodolphe Clédassou (Euclid) summer school — Cycle 1</h3>
+          <p class="entry-venue">Two weeks, 84 hours: the science of large cosmological surveys. Les Karellis, France.</p>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">2025 —</div>
+        <div>
+          <h3>DESI observing shift</h3>
+          <p class="entry-venue">Three nights as remote Supporting Observer, Mayall 4-m telescope, Kitt Peak.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CODE ================================ -->
+<section id="code">
+  <div class="wrap">
+    <p class="label">Code &amp; projects</p>
+    <h2>Things I have built</h2>
+
+    <div class="cards">
+
+      <article class="card">
+        <p class="card-meta">Thesis pipeline · Python / JAX · MIT</p>
+        <h3>thesis-desi-cmb-fli</h3>
+        <p>
+          A differentiable forward model and Bayesian inference pipeline for the joint
+          field-level analysis of galaxy clustering and CMB lensing. Curved-sky light cone,
+          LPT evolution, Born lensing projector, MCLMC sampling on multiple GPUs.
+          Open source, with unit tests, continuous integration and documentation.
+        </p>
+        <div class="card-links">
+          <a href="https://github.com/jhawla/thesis-desi-cmb-fli">Repository</a>
+          <a href="https://jhawla.github.io/thesis-desi-cmb-fli/">Documentation</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="card-meta">Side project · iOS &amp; macOS</p>
+        <h3>CarbonScale</h3>
+        <p>
+          An app that turns your daily food and travel choices into a CO<sub>2</sub> figure
+          you can actually act on, with a weekly target that adapts as you go. Designed and
+          built solo, published on the App Store. Winner of the Pépite
+          Bourgogne-Franche-Comté idea competition in 2023.
+        </p>
+        <div class="card-links">
+          <a href="https://carbonscale.app">carbonscale.app</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FILES =============================== -->
+<section id="files">
+  <div class="wrap">
+    <p class="label">CV &amp; files</p>
+    <h2>Everything in one place</h2>
+
+    <div class="entries">
+      <article class="entry">
+        <div class="entry-date">Aug 2026</div>
+        <div>
+          <h3>Academic CV</h3>
+          <p class="entry-venue">Education, research, talks, teaching and technical skills.</p>
+          <a class="pdf" href="files/Hawla_CV.pdf">Download (PDF)</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">Jul 2026</div>
+        <div>
+          <h3>DESI Durham — slides</h3>
+          <p class="entry-venue">Adding CMB lensing to the galaxy clustering field-level analysis.</p>
+          <a class="pdf" href="files/Hawla_slides_DESI_Durham_2026.pdf">Download (PDF)</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">Jun 2026</div>
+        <div>
+          <h3>GDR CoPhy — slides</h3>
+          <p class="entry-venue">Field-level inference for the joint analysis of galaxy clustering and CMB lensing.</p>
+          <a class="pdf" href="files/Hawla_slides_GDR_CoPhy_2026.pdf">Download (PDF)</a>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="entry-date">Jun 2026</div>
+        <div>
+          <h3>PheniicsFest — poster</h3>
+          <p class="entry-venue">Field-level inference for the joint analysis of galaxy clustering &amp; CMB lensing.</p>
+          <a class="pdf" href="files/Hawla_poster_PheniicsFest_2026.pdf">Download (PDF)</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================= -->
+<section id="contact" style="border-bottom:none">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2>Get in touch</h2>
+    <div class="prose">
+      <p>
+        I am always happy to talk about field-level inference, differentiable simulators,
+        or anything at the intersection of large-scale structure and the CMB.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <a href="mailto:jonathan.hawla@cea.fr"><b>Email</b><span>jonathan.hawla@cea.fr</span></a>
+      <a href="https://github.com/jhawla"><b>GitHub</b><span>github.com/jhawla</span></a>
+      <a href="https://orcid.org/0009-0003-9478-2794"><b>ORCID</b><span>0009-0003-9478-2794</span></a>
+      <a href="https://www.linkedin.com/in/jonathan-hawla-758aa4245/"><b>LinkedIn</b><span>jonathan-hawla</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="wrap">
+  <span>CEA Paris-Saclay · IRFU/DPhP · Gif-sur-Yvette, France</span>
+  <span>Background field generated with the LPT scheme used in this work.</span>
+</footer>
+
+<script>
+  // revelation au defilement
+  const io = new IntersectionObserver((es) => {
+    es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('seen'); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('section > .wrap > *').forEach(el => {
+    el.classList.add('reveal'); io.observe(el);
+  });
+
+  // lien de navigation actif
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const spy = new IntersectionObserver((es) => {
+    es.forEach(e => {
+      if (!e.isIntersecting) return;
+      links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  document.querySelectorAll('main section').forEach(s => spy.observe(s));
+</script>
+
+</body>
+</html>
