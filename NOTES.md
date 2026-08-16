@@ -1,13 +1,14 @@
-# jhawla.github.io
+# Notes personnelles (non publiées)
 
-Personal website — Jonathan Hawla, PhD student in cosmology, CEA Paris-Saclay.
+Ce fichier est listé dans `.gitignore` : il reste sur ton disque et n'apparaît pas
+sur GitHub. Site personnel de Jonathan Hawla.
 
 Plain static HTML and CSS. No build step, no framework, no dependencies.
 Editing a file and pushing is the whole workflow.
 
 ---
 
-## Mise en ligne (une seule fois)
+## Mise en ligne (déjà faite)
 
 1. Sur GitHub, crée un dépôt **public** nommé exactement `jhawla.github.io`.
    Le nom doit correspondre à ton pseudo, sinon le site ne sera pas servi à la racine.
@@ -31,6 +32,14 @@ Editing a file and pushing is the whole workflow.
 
 Pour toute mise à jour ensuite : modifie, puis `git add -A && git commit -m "..." && git push`.
 Le site se redéploie tout seul en une minute environ.
+
+Si `README.md` a déjà été poussé sur GitHub, retire-le du suivi une fois :
+
+```bash
+git rm --cached README.md
+git commit -m "Retire les notes du depot public"
+git push
+```
 
 ---
 

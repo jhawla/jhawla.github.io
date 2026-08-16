@@ -1,5 +1,5 @@
 /* =====================================================================
-   Jonathan Hawla — site personnel
+   Jonathan Hawla, site personnel
    Palette derivee d'une colormap de carte de convergence kappa :
    vide noir -> violet profond -> orange -> jaune pale.
    ===================================================================== */
@@ -203,6 +203,14 @@ h1 {
 /* ---------- sections -------------------------------------------------- */
 
 section { padding-block: clamp(3.5rem, 8vw, 6rem); border-bottom: 1px solid var(--line); }
+section.last { border-bottom: none; }
+
+.label-second { margin-top: clamp(2.75rem, 6vw, 4rem); }
+
+.minor {
+  font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em;
+  color: var(--dim); margin: 2.5rem 0 0;
+}
 
 .label {
   font-family: var(--mono); font-size: 0.72rem;
@@ -230,7 +238,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- chaine du forward model ----------------------------------- */
 
-.chain { list-style: none; margin: 2.75rem 0 0; padding: 0; counter-reset: step; }
+.chain { list-style: none; margin: 0.9rem 0 0; padding: 0; counter-reset: step; }
 .chain li {
   counter-increment: step;
   display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 1rem;
@@ -321,7 +329,7 @@ p:last-child { margin-bottom: 0; }
 @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
 
 .facts { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 0.8rem; }
-.facts li { padding: 0.85rem 0; border-top: 1px solid var(--line); color: var(--ink); }
+.facts li { padding: 0.85rem 0; border-top: 1px solid var(--line); color: var(--ink); line-height: 1.6; }
 .facts li:last-child { border-bottom: 1px solid var(--line); }
 .facts b { display: block; color: var(--dim); font-weight: 400; font-size: 0.68rem; letter-spacing: 0.13em; text-transform: uppercase; margin-bottom: 0.3rem; }
 
