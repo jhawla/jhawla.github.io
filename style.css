@@ -36,6 +36,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  overflow-wrap: normal; word-break: normal; hyphens: none;
   background: var(--void);
   color: var(--ink);
   font-family: var(--body);
@@ -121,13 +122,13 @@ a { color: inherit; }
 .hero-bg {
   position: absolute; inset: 0;
   background: url("assets/field.jpg") center/cover no-repeat;
-  opacity: 0.5;
+  opacity: 0.9;
 }
 .hero-veil {
   position: absolute; inset: 0;
   background:
-    radial-gradient(120% 90% at 12% 30%, rgba(5, 5, 9, 0.94) 0%, rgba(5, 5, 9, 0.55) 45%, rgba(5, 5, 9, 0.2) 100%),
-    linear-gradient(to bottom, rgba(5, 5, 9, 0.55), rgba(5, 5, 9, 0.35) 50%, var(--void) 100%);
+    radial-gradient(100% 80% at 8% 40%, rgba(5, 5, 9, 0.92) 0%, rgba(5, 5, 9, 0.62) 38%, rgba(5, 5, 9, 0.12) 100%),
+    linear-gradient(to bottom, rgba(5, 5, 9, 0.4), rgba(5, 5, 9, 0.1) 45%, rgba(5, 5, 9, 0.9) 88%, var(--void) 100%);
 }
 .hero-in {
   position: relative;
@@ -152,11 +153,10 @@ h1 {
   letter-spacing: -0.035em;
   margin: 0 0 1.5rem;
 }
-h1 .given { display: block; color: var(--dim); font-weight: 400; font-size: 0.5em; letter-spacing: -0.01em; margin-bottom: 0.2em; }
 
 .lede {
-  font-size: clamp(1.1rem, 2.1vw, 1.32rem);
-  line-height: 1.55; max-width: 34ch;
+  font-size: clamp(1.05rem, 1.9vw, 1.22rem);
+  line-height: 1.6; max-width: 40ch;
   margin: 0 0 1.1rem; color: var(--ink);
 }
 .lede em { color: var(--peak); font-style: italic; }
@@ -167,13 +167,13 @@ h1 .given { display: block; color: var(--dim); font-weight: 400; font-size: 0.5e
 }
 
 .portrait {
-  width: 170px;                       /* repli si clamp() indisponible */
-  width: clamp(130px, 17vw, 190px);
-  max-width: 40vw;
-  aspect-ratio: 1; border-radius: 50%;
-  object-fit: cover; display: block;
+  width: 200px; height: 200px;        /* largeur ET hauteur : jamais d'ellipse */
+  max-width: 38vw; max-height: 38vw;
+  border-radius: 50%;
+  object-fit: cover; object-position: center;
+  display: block; align-self: center; justify-self: end;
   border: 1px solid var(--line-hot);
-  box-shadow: 0 0 0 6px rgba(255, 122, 24, 0.05), 0 22px 60px rgba(0, 0, 0, 0.7);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.6);
 }
 @media (max-width: 780px) {
   .hero-in { grid-template-columns: 1fr; }
@@ -224,7 +224,7 @@ h3 {
 
 p { margin: 0 0 1.15rem; }
 p:last-child { margin-bottom: 0; }
-.prose { max-width: 66ch; color: #DCD5CC; overflow-wrap: break-word; }
+.prose { max-width: 66ch; color: #DCD5CC; }
 .prose a { color: var(--peak); text-decoration-color: rgba(255, 203, 140, 0.4); text-underline-offset: 3px; }
 .prose a:hover { color: var(--kappa); text-decoration-color: var(--kappa); }
 
@@ -233,7 +233,7 @@ p:last-child { margin-bottom: 0; }
 .chain { list-style: none; margin: 2.75rem 0 0; padding: 0; counter-reset: step; }
 .chain li {
   counter-increment: step;
-  display: grid; grid-template-columns: 3.25rem 1fr; gap: 1rem;
+  display: grid; grid-template-columns: 3.25rem minmax(0, 1fr); gap: 1rem;
   padding: 1.05rem 0; border-top: 1px solid var(--line);
 }
 .chain li:last-child { border-bottom: 1px solid var(--line); }
@@ -242,17 +242,18 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--mono); font-size: 0.78rem; color: var(--kappa);
   padding-top: 0.28rem;
 }
+.chain li > div { min-width: 0; }
 .chain strong {
   font-family: var(--display); font-weight: 600; font-size: 1.02rem;
   display: block; margin-bottom: 0.15rem;
 }
-.chain span { color: var(--dim); font-size: 0.94rem; }
+.chain span { display: block; color: var(--dim); font-size: 0.94rem; }
 
 /* ---------- listes datees (talks, ecoles) ----------------------------- */
 
 .entries { display: grid; gap: 0; }
 .entry {
-  display: grid; grid-template-columns: 8.5rem 1fr; gap: 1.5rem;
+  display: grid; grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1.5rem;
   padding: 1.5rem 0; border-top: 1px solid var(--line);
   transition: background 0.25s ease;
 }
@@ -316,7 +317,7 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- deux colonnes (recherche) --------------------------------- */
 
-.split { display: grid; grid-template-columns: 1.55fr 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+.split { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(240px, 1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 @media (max-width: 860px) { .split { grid-template-columns: 1fr; } }
 
 .facts { list-style: none; margin: 0; padding: 0; font-family: var(--mono); font-size: 0.8rem; }

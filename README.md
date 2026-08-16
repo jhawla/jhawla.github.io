@@ -34,24 +34,13 @@ Le site se redéploie tout seul en une minute environ.
 
 ---
 
-## Fichiers à ajouter toi-même
+## Fichiers
 
-Deux PDF sont référencés par le site mais absents du dossier `files/`.
-Dépose-les avec **exactement** ces noms, sinon les liens renverront une 404 :
+Tous les PDF référencés par le site sont présents dans `files/` :
+CV, slides de Durham, slides du GDR CoPhy, poster du PheniicsFest.
 
-| Fichier attendu | Contenu |
-|---|---|
-| `files/Hawla_slides_GDR_CoPhy_2026.pdf` | Slides du GDR CoPhy, Clermont-Ferrand |
-| `files/Hawla_poster_PheniicsFest_2026.pdf` | Poster du PheniicsFest |
-
-Optionnel, si tu remets la main dessus : les slides d'Elbereth et du spotlight de Tucson.
-Il faudra alors ajouter le lien à la main dans `index.html` (copie un bloc `<article class="entry">`).
-
-**Remplace aussi `assets/photo.jpg`** par ton portrait en bonne résolution.
-Celui qui s'y trouve a été récupéré depuis ton ancien CV et est de qualité insuffisante :
-carré, au moins 600×600 px, visage centré.
-
----
+Si tu retrouves les slides d'Elbereth ou du spotlight de Tucson, dépose-les dans `files/`
+puis ajoute le lien à la main dans `index.html` (copie un bloc `<article class="entry">`).
 
 ## Mettre à jour le CV
 
