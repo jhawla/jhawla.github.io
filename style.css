@@ -205,7 +205,7 @@ h1 {
 section { padding-block: clamp(3.5rem, 8vw, 6rem); border-bottom: 1px solid var(--line); }
 section.last { border-bottom: none; }
 
-.label-second { margin-top: clamp(2.75rem, 6vw, 4rem); }
+.label.label-second { margin-top: clamp(2.75rem, 6vw, 4rem); }
 
 .minor {
   font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.05em;
@@ -357,3 +357,18 @@ footer a { color: var(--dim); }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); }
 .reveal.seen { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+/* ---------- video du forward model ------------------------------------ */
+
+.film { margin: clamp(2.5rem, 6vw, 3.75rem) 0 0; }
+.film video {
+  display: block; width: 100%; height: auto; aspect-ratio: 16 / 9;
+  background: #E4E0D8;
+  border: 1px solid var(--line-hot); border-radius: 3px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
+}
+.film figcaption {
+  font-family: var(--mono); font-size: 0.74rem; line-height: 1.7;
+  color: var(--dim); max-width: 92ch; margin-top: 1rem;
+}
+.film + .prose .minor { margin-top: clamp(2.25rem, 5vw, 3rem); }

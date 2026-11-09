@@ -113,17 +113,6 @@
           The pipeline has been validated on synthetic data and on AbacusSummit N-body
           simulations. The next step is the analysis of DESI and Planck/ACT data.
         </p>
-
-        <p class="minor">The forward model proceeds as follows.</p>
-
-        <ol class="chain">
-          <li><div><strong>Initial conditions</strong><span>A Gaussian field, optionally with local primordial non-Gaussianity.</span></div></li>
-          <li><div><strong>Gravitational evolution</strong><span>Lagrangian perturbation theory on a light cone, in full spherical geometry.</span></div></li>
-          <li><div><strong>Galaxy bias and RSD</strong><span>Biased tracers placed in redshift space.</span></div></li>
-          <li><div><strong>Lensing projection</strong><span>Convergence maps under the Born approximation, on the curved sky.</span></div></li>
-          <li><div><strong>Joint likelihood</strong><span>Pixel-exact, with the out-of-box lensing signal marginalised analytically.</span></div></li>
-          <li><div><strong>Posterior sampling</strong><span>Microcanonical Langevin Monte Carlo on multiple GPUs.</span></div></li>
-        </ol>
       </div>
 
       <ul class="facts">
@@ -133,6 +122,33 @@
         <li><b>Dates</b>October 2025 to September 2028</li>
         <li><b>Data and simulations</b>DESI LRG, Planck PR4, ACT DR6, AbacusSummit</li>
       </ul>
+    </div>
+
+    <figure class="film">
+      <video id="fm-video" src="assets/forward-model.mp4" poster="assets/forward-model-poster.jpg"
+             width="1280" height="720" muted loop playsinline controls preload="none"
+             aria-label="Animation of the forward model and the MCLMC sampler"></video>
+      <figcaption>
+        The forward model and the sampler in 30 seconds. A Gaussian initial field drawn from
+        the power spectrum is evolved under gravity. The same matter field yields both
+        observables: biased galaxies in redshift space, and the CMB lensing convergence
+        projected along the line of sight. MCLMC then uses the gradient of the log-posterior
+        to update the cosmological parameters and the initial field together. Shown here in
+        a single box; the actual pipeline runs on a curved-sky light cone.
+      </figcaption>
+    </figure>
+
+    <div class="prose">
+      <p class="minor">The full pipeline, step by step.</p>
+
+      <ol class="chain">
+        <li><div><strong>Initial conditions</strong><span>A Gaussian field, optionally with local primordial non-Gaussianity.</span></div></li>
+        <li><div><strong>Gravitational evolution</strong><span>Lagrangian perturbation theory on a light cone, in full spherical geometry.</span></div></li>
+        <li><div><strong>Galaxy bias and RSD</strong><span>Biased tracers placed in redshift space.</span></div></li>
+        <li><div><strong>Lensing projection</strong><span>Convergence maps under the Born approximation, on the curved sky.</span></div></li>
+        <li><div><strong>Joint likelihood</strong><span>Pixel-exact, with the out-of-box lensing signal marginalised analytically.</span></div></li>
+        <li><div><strong>Posterior sampling</strong><span>Microcanonical Langevin Monte Carlo on multiple GPUs.</span></div></li>
+      </ol>
     </div>
   </div>
 </section>
@@ -196,6 +212,18 @@
         </div>
       </article>
 
+    </div>
+
+    <p class="label label-second">Teaching</p>
+
+    <div class="entries">
+      <article class="entry">
+        <div class="entry-date">Nov 2026 – Jan 2027</div>
+        <div>
+          <h3>Computational Thinking (algorithms)<span class="tag">TD / TP</span></h3>
+          <p class="entry-venue">21 hours of tutorials and lab sessions for first-year students of the BSc in AI, Data &amp; Management Sciences (AIDAMS). CentraleSupélec, Université Paris-Saclay.</p>
+        </div>
+      </article>
     </div>
 
     <p class="label label-second">Schools and collaboration service</p>
@@ -301,6 +329,20 @@
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   document.querySelectorAll('main section').forEach(s => spy.observe(s));
+
+  const film = document.getElementById('fm-video');
+  const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (film && !calm && 'IntersectionObserver' in window) {
+    let userPaused = false;
+    film.addEventListener('pause', () => { if (film.dataset.auto !== '1') userPaused = true; film.dataset.auto = ''; });
+    film.addEventListener('play', () => { userPaused = false; });
+    new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (e.isIntersecting && !userPaused) { film.preload = 'auto'; film.play().catch(() => {}); }
+        else if (!e.isIntersecting && !film.paused) { film.dataset.auto = '1'; film.pause(); }
+      });
+    }, { threshold: 0.5 }).observe(film);
+  }
 </script>
 
 </body>
