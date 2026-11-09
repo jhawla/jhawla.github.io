@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;1,6..72,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -124,19 +124,11 @@
       </ul>
     </div>
 
-    <figure class="film">
+    <div class="film">
       <video id="fm-video" src="assets/forward-model.mp4" poster="assets/forward-model-poster.jpg"
              width="1280" height="720" muted loop playsinline controls preload="none"
              aria-label="Animation of the forward model and the MCLMC sampler"></video>
-      <figcaption>
-        The forward model and the sampler in 30 seconds. A Gaussian initial field drawn from
-        the power spectrum is evolved under gravity. The same matter field yields both
-        observables: biased galaxies in redshift space, and the CMB lensing convergence
-        projected along the line of sight. MCLMC then uses the gradient of the log-posterior
-        to update the cosmological parameters and the initial field together. Shown here in
-        a single box; the actual pipeline runs on a curved-sky light cone.
-      </figcaption>
-    </figure>
+    </div>
 
     <div class="prose">
       <p class="minor">The full pipeline, step by step.</p>
