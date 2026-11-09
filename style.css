@@ -367,4 +367,8 @@ footer a { color: var(--dim); }
   border: 1px solid var(--line-hot); border-radius: 3px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.55);
 }
+.film-note {
+  font-family: var(--mono); font-size: 0.7rem; color: var(--dim);
+  margin: 0.8rem 0 0;
+}
 .film + .prose .minor { margin-top: clamp(2.25rem, 5vw, 3rem); }
